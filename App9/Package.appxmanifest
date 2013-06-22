@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+  <Identity Name="8a2a665e-89b8-41e7-811d-47f26ffed373" Publisher="CN=Paweł" Version="1.0.0.0" />
+  <Properties>
+    <DisplayName>Kalkulator</DisplayName>
+    <PublisherDisplayName>Paweł</PublisherDisplayName>
+    <Logo>Assets\mathstorelogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.2.1</OSMinVersion>
+    <OSMaxVersionTested>6.2.1</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="App9.App">
+      <VisualElements DisplayName="Kalkulator" Logo="Assets\mathico.png" SmallLogo="Assets\SmallLogo.png" Description="Do liczenia" ForegroundText="light" BackgroundColor="#01B0F0">
+        <DefaultTile ShowName="allLogos" />
+        <SplashScreen Image="Assets\mathsplash.png" BackgroundColor="#01B0F0" />
+      </VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+  </Capabilities>
+</Package>
