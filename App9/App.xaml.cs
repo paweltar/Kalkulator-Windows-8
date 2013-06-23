@@ -58,6 +58,7 @@ namespace App9
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
             }
+            //anpadoma - coment
 
             if (rootFrame.Content == null)
             {
