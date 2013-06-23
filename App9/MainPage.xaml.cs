@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -19,20 +10,15 @@ namespace App9
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class MainPage
     {
         public MainPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
                                     
         }
 
-        private double num1;
-        private double num2;
-        private string cal;
-        private bool inputstatus = true;
-        
-
+       
         /// <summary>
         /// Invoked when this page is about to be displayed in a Frame.
         /// </summary>
@@ -42,82 +28,63 @@ namespace App9
         {
         }
 
-        
-        
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (inputstatus)
-            {
-                tvWynik.Text += b1.Content;
-            }
-            
+            var b = (Button) sender;
+            if (b.Content != null) tvWynik.Text += b.Content.ToString();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Result_click(object sender, RoutedEventArgs e)
         {
-            if (inputstatus)
+            try
             {
-                tvWynik.Text += b2.Content;
+                Result();
             }
-           
-        }
-
-        private void b3_Click(object sender, RoutedEventArgs e)
-        {
-            if (inputstatus)
+            catch (Exception)
             {
-                tvWynik.Text += b3.Content;
+                obokWyniku.Text = "Błąd!!";
             }
         }
 
-        private void b4_Click(object sender, RoutedEventArgs e)
+        private void Result()
         {
-            if (inputstatus)
+            int iOp = 0;
+            if (tvWynik.Text.Contains("+"))
             {
-                tvWynik.Text += b4.Content;
+                iOp = tvWynik.Text.IndexOf("+");
             }
-        }
-        private void b5_Click(object sender, RoutedEventArgs e)
-        {
-            if (inputstatus)
+            else if (tvWynik.Text.Contains("-"))
             {
-                tvWynik.Text += b5.Content;
+                iOp = tvWynik.Text.IndexOf("-");
             }
-        }
-        private void b6_Click(object sender, RoutedEventArgs e)
-        {
-            if (inputstatus)
+            else if (tvWynik.Text.Contains("*"))
             {
-                tvWynik.Text += b6.Content;
+                iOp = tvWynik.Text.IndexOf("*");
             }
-        }
-        private void b7_Click(object sender, RoutedEventArgs e)
-        {
-            if (inputstatus)
+            else if (tvWynik.Text.Contains("/"))
             {
-                tvWynik.Text += b7.Content;
+                iOp = tvWynik.Text.IndexOf("/");
             }
-        }
-        private void b8_Click(object sender, RoutedEventArgs e)
-        {
-            if (inputstatus)
+
+            string op = tvWynik.Text.Substring(iOp, 1);
+            double op1 = Convert.ToDouble(tvWynik.Text.Substring(0, iOp));
+            double op2 = Convert.ToDouble(tvWynik.Text.Substring(iOp + 1, tvWynik.Text.Length - iOp - 1));
+
+            if (op == "+")
             {
-                tvWynik.Text += b8.Content;
+                tvWynik.Text += "=" + (op1 + op2);
             }
-        }
-        private void b9_Click(object sender, RoutedEventArgs e)
-        {
-            if (inputstatus)
+            else if (op == "-")
             {
-                tvWynik.Text += b9.Content;
+                tvWynik.Text += "=" + (op1 - op2);
             }
-        }
-        private void b0_Click(object sender, RoutedEventArgs e)
-        {
-            if (inputstatus)
+            else if (op == "*")
             {
-                tvWynik.Text += b0.Content;
+                tvWynik.Text += "=" + (op1 * op2);
+            }
+            else if (op == "/")
+            {
+                tvWynik.Text += "=" + (op1/op2);
             }
         }
 
@@ -126,14 +93,15 @@ namespace App9
             tvWynik.Text = "";
         }
 
-        private void b0_Click_1(object sender, RoutedEventArgs e)
+/*
+        private void R_click(object sender, RoutedEventArgs e)
         {
-            tvWynik.Text += b0.Content;
+            if (tvWynik.Text.Length > 0)
+            {
+                tvWynik.Text = tvWynik.Text.Substring(0, tvWynik.Text.Length - 1);
+            }
         }
+*/
 
-        private void bplus_Click(object sender, RoutedEventArgs e)
-        {
-           
-        }
     }
 }
